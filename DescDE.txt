@@ -1,0 +1,5 @@
+Adventure Welt: offenes siedeln und erforschen der Karte.
+
+Ziel ist es alles Gold und alle Edelsteine auf der Karte abzubauen.
+
+Work in progress!
