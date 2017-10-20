@@ -8,7 +8,6 @@ protected func Initialize()
     rule->SetLastClonkRespawn(true);
     rule->SetInitialRelaunch(false);
     rule->SetAllowPlayerRestart(true);
-    rule->SetInventoryTransfer(true);
 
     GUI_Controller->ShowWealth();
 
