@@ -4,6 +4,11 @@ protected func Initialize()
     CreateObject(Rule_BuyAtFlagpole);
     var rule = GetRelaunchRule();
     rule->SetFreeCrew(true);
+    rule->SetBaseRespawn(true);
+    rule->SetLastClonkRespawn(true);
+    rule->SetInitialRelaunch(false);
+    rule->SetAllowPlayerRestart(true);
+    rule->SetInventoryTransfer(true);
 
     GUI_Controller->ShowWealth();
 
