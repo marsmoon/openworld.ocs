@@ -44,7 +44,115 @@ private func InitEnvironment()
     // Some natural disasters.
     Earthquake->SetChance((SCENPAR_Difficulty - 1) * 20);
     Meteor->SetChance((SCENPAR_Difficulty - 1) * 20);
-
+    
+    // Spawn animals
+	var x;
+	var numberPlayers = GetPlayerCount();
+	if (numberPlayers == 0)
+		numberPlayers = 1;
+		
+	var mapHalfWidth = LandscapeWidth() / 2;
+	
+	
+	// neutral
+	var numWipfs = SCENPAR_MapSize * RandomX(2, 6);
+	for (var i = 0; i < numWipfs; i++)
+	{
+		x = mapHalfWidth + RandomX(-mapHalfWidth, mapHalfWidth);
+		CreateObject(Wipf, x, FindHeight(x) - 50);	
+	}
+	
+	var numButterflies = SCENPAR_MapSize * 3;
+	for (var i = 0; i < numButterflies; i++)
+	{
+		x = mapHalfWidth + RandomX(-mapHalfWidth, mapHalfWidth);
+		CreateObject(Butterfly, x, FindHeight(x) - 50);	
+	}
+		
+	var numFireflies = SCENPAR_MapSize * 5;
+	for (var i = 0; i < numFireflies; i++)
+	{
+		x = mapHalfWidth + RandomX(-mapHalfWidth, mapHalfWidth);
+		CreateObject(Firefly, x, FindHeight(x) - 50);	
+	}
+	
+	
+	// enemies
+	var numZaphives = SCENPAR_MapSize;
+	for (var i = 0; i < numZaphives; i++)
+	{
+		x = mapHalfWidth + RandomX(-mapHalfWidth, mapHalfWidth);
+		CreateObject(Zaphive, x, FindHeight(x) - 50);	
+	}
+	
+	var numPukas = SCENPAR_MapSize * 2 * numberPlayers;
+	for (var i = 0; i < numPukas; i++)
+	{
+	
+		x = mapHalfWidth + RandomX(-mapHalfWidth, mapHalfWidth);
+		CreateObject(Puka, x, FindHeight(x) - 50);	
+	}
+	
+	var numChippies = SCENPAR_MapSize * RandomX(3, 6);
+	for (var i = 0; i < numChippies; i++)
+	{
+		x = mapHalfWidth + RandomX(-mapHalfWidth, mapHalfWidth);
+		CreateObject(Chippie, x, FindHeight(x) - 50);	
+	}
+	
+	var numMooqs = SCENPAR_MapSize * 2 * numberPlayers;
+	for (var i = 0; i < numMooqs; i++)
+	{
+		x = mapHalfWidth + RandomX(-mapHalfWidth, mapHalfWidth);
+		CreateObject(Mooq, x, FindHeight(x) - 50);
+	}
+	
+	
+	// spawn bandits
+	var numBandits;
+	if (SCENPAR_MapSize == 1)
+	{
+		if (numberPlayers > 1)
+			numBandits = 1 + (numberPlayers / 2);
+		else
+			numBandits = 2;
+			
+	} else
+	{
+		numBandits = SCENPAR_MapSize + numberPlayers;
+	}
+	
+	// all bandits in one place
+	x = mapHalfWidth + RandomX(-mapHalfWidth, mapHalfWidth);
+	for (var i = 0; i < numBandits; i++)
+	{
+		var bandit = CreateObjectAbove(Clonk, x, FindHeight(x) - 50);
+		bandit.StaticSaveVar = "bandit";
+		bandit->SetDir(DIR_Left);
+		bandit->SetName("Bandit");
+		bandit->SetAlternativeSkin("Guard");
+	
+		AI->AddAI(bandit);
+		AI->SetHome(bandit);
+		AI->SetGuardRange(bandit, bandit->GetX()-100, bandit->GetY()-100, 300, 110);
+		
+		// random weapons
+		var enemyType = Random(2);
+		if (enemyType == 0)
+		{
+			bandit->CreateContents(Sword);
+			
+		} else if (enemyType == 1)
+		{
+			bandit->CreateContents(Bow);
+			bandit->CreateContents(Arrow, 3);	
+		}
+			
+		bandit->DoEnergy(100 * SCENPAR_Difficulty);
+		bandit->AddEnergyBar();
+		x += 10;
+	}
+	
     return;
 }
 
