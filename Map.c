@@ -12,7 +12,7 @@ public func InitializeMap(proplist map)
     if (SCENPAR_MapSize == 2)
         map_size = [250, 250];
     if (SCENPAR_MapSize == 3)
-        map_size = [500, 500];
+        map_size = [1500, 500];
 
     // Set the map size.
     map->Resize(map_size[0], map_size[1]);
