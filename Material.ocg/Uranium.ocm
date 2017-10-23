@@ -1,0 +1,14 @@
+[Material]
+Name=Uranium
+Shape=Rough
+Density=85
+Friction=100
+BlastFree=1
+Blast2Object=Uranium
+Blast2ObjectRatio=100
+MaxAirSpeed=100
+MaxSlide=1
+Placement=50
+TextureOverlay=uranium
+LightSpot=11,25,11
+MinShapeOverlap=10

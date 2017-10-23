@@ -91,6 +91,7 @@ public func DrawMaterials(proplist rect, proplist surface)
     // Gold near the bottom only
     DrawMaterialInRange("Gold", 70, 90, [1, 4], 4);
     DrawMaterialInRange("Ruby", 70, 90, [1, 4], 4);
+    DrawMaterialInRange("Uranium", 70, 90, [1, 4], 2);
 
     // Lava near at bottom
     DrawMaterialInRange("DuroLava", 70, 90, [2, 40], 10);
