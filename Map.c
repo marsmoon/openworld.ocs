@@ -85,8 +85,8 @@ public func DrawMaterials(proplist rect, proplist surface)
     DrawMaterialInRange("Granite", 80, 100, [25, 2], 15);
 
     // Some oil
-    // DrawMaterialInRange("Oil", 50, 80, 2, 10);
-    // DrawMaterialInRange("Oil", 80, 100, [25, 2], 15);
+    DrawMaterialInRange("Oil", 50, 80, 2, 10);
+    DrawMaterialInRange("Oil", 80, 100, [25, 2], 15);
 
     // Gold near the bottom only
     DrawMaterialInRange("Gold", 70, 90, [1, 4], 4);
